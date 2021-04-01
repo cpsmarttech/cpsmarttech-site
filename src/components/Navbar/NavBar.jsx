@@ -15,14 +15,16 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#333333"
     },
     btnChips: {
-       
+        paddingLeft:"30px",
+        paddingRight:"30px",
         width:"max-content",
+        borderRadius: "25px",
         "&:hover": {
             color: "black",
             backgroundColor: "white",
             border: "1px",
-            borderRadius: "10px",
-            boxShadow: '0 3px 5px 2px',
+            borderRadius: "25px",
+            // boxShadow: '0 3px 5px 2px',
         }
     }
 
