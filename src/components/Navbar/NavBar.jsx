@@ -1,47 +1,12 @@
 // Navbar
-import { AppBar, Button, Drawer, IconButton, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Drawer, Hidden, IconButton, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-        color: "white"
-    },
-    title: {
-        flexGrow: 1,
-        "&:hover": {
-            color: "#008080"
-        }
-    },
-    navColor: {
-        backgroundColor: "#333333"
-    },
-    btnChips: {
-        paddingLeft: "30px",
-        paddingRight: "30px",
-        width: "max-content",
-        borderRadius: "25px",
-        "&:hover": {
-            backgroundColor: "#008080",
-            border: "1px",
-            borderRadius: "25px",
-        },
-    },
-    list: {
-        width: "40%",
-    },
-    fullList: {
-        width: 'auto',
-    },
-    drawer:{
-        backgroundColor:"#333333",
-        color:"white",
-    }
-   
-}))
+
+import useStyles from './Navbar.style';
 function NavBar(props) {
     const classes = useStyles();
     const [drawerState, setDrawerState] = useState(false)
@@ -61,8 +26,8 @@ function NavBar(props) {
             <List>
                 {
                     ['Home', 'Team', 'About', 'Contact'].map((text, index) => (
-                        <ListItem  key={text}>
-                            <Button color="inherit" className={classes.btnChips}>   {text}
+                        <ListItem key={text}>
+                            <Button color="inherit" className={classes.btnChipsList}>   {text}
                             </Button>
                         </ListItem>
                     ))
@@ -74,7 +39,7 @@ function NavBar(props) {
     return (
         <div>
             <Drawer
-                classes={{paper:classes.drawer}}
+                classes={{ paper: classes.drawer }}
                 open={drawerState}
                 onClose={toggleDrawer(drawerState)}
             >
@@ -82,17 +47,20 @@ function NavBar(props) {
             </Drawer>
             <AppBar position="static" className={classes.navColor}>
                 <Toolbar>
-                    <IconButton edge="start" onClick={toggleDrawer(drawerState)} className={classes.menuButton} aria-label="menu">
-                        <MenuIcon />
-
-                    </IconButton>
+                    <Hidden smUp>
+                        <IconButton edge="start" onClick={toggleDrawer(drawerState)} className={classes.menuButton} aria-label="menu" >
+                            <MenuIcon />
+                        </IconButton>
+                    </Hidden>
                     <Typography variant="h6" className={classes.title}>
                         Cpsmarttech
-                 </Typography>
-                    <Button color="inherit" className={classes.btnChips}>Home</Button>
-                    <Button color="inherit" className={classes.btnChips}>Team</Button>
-                    <Button color="inherit" className={classes.btnChips}>About</Button>
-                    <Button color="inherit" className={classes.btnChips}>Contact</Button>
+                    </Typography>
+                    <Hidden xsDown>
+                        <Button color="inherit" className={classes.btnChips}>Home</Button>
+                        <Button color="inherit" className={classes.btnChips}>Team</Button>
+                        <Button color="inherit" className={classes.btnChips}>About</Button>
+                        <Button color="inherit" className={classes.btnChips}>Contact</Button>
+                    </Hidden>
                 </Toolbar>
             </AppBar>
         </div>
