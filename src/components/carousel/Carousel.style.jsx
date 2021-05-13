@@ -31,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
     left:{
         cursor:"pointer",
         color:'white',
-        display:'grid',
-        placeItems:'center',
+        // display:'grid',
+        // placeItems:'center',
     },
     right:{
         cursor:"pointer",
         color:'white',
-        display:'grid',
-        placeItems:'center',
+        // display:'grid',
+        // placeItems:'center',
     }
 }))
 
